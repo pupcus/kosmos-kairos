@@ -1,4 +1,4 @@
-(defproject kosmos/kosmos-kairos "0.0.2-SNAPSHOT"
+(defproject kosmos/kosmos-kairos "0.0.2"
 
   :description "simple task scheduling for kosmos"
 
