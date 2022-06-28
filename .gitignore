@@ -2,11 +2,12 @@
 *.jar
 .hg/
 .hgignore
+.version
+/.cpcache
 /.lein-*
 /.nrepl-port
 /checkouts
 /classes
-/scratch
 /target
 pom.xml
 pom.xml.asc
