@@ -1,28 +1,18 @@
 {
  :deps
  {
-  kosmos/kosmos {:git/url "https://github.com/pupcus/kosmos.git"
-                 :git/tag "2022-06-28-R2"
-                 :git/sha "1139f6e"}
+  io.github.pupcus/kosmos {:git/tag "2022-06-29-R1"
+                           :git/sha "1d3e828"}
   cronjure/cronjure  {:mvn/version "0.1.1"}
   com.cronutils/cron-utils {:mvn/version "9.1.6"}
   }
 
- :paths ["src" "resources"]
+ :paths ["src"]
 
  :aliases
  {
   :dev {:extra-paths ["test" "dev-resources"]
         :extra-deps {org.clojure/clojure {:mvn/version "1.11.1"}
                      org.slf4j/slf4j-simple {:mvn/version "1.7.36"}}}
-
-
-  :test {:extra-paths ["test"]
-         :extra-deps {io.github.cognitect-labs/test-runner
-                      {:git/tag "v0.5.1" :git/sha "dfb30dd"}}
-         :main-opts ["-m" "cognitect.test-runner"]
-         :exec-fn cognitect.test-runner.api/test}
-
   }
-
  }
