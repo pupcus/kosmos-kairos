@@ -1,10 +1,10 @@
 {
  :deps
  {
-  io.github.pupcus/kosmos {:git/tag "2022-06-29-R1"
-                           :git/sha "1d3e828"}
+  io.github.pupcus/kosmos {:git/tag "2025-07-24-R1"
+                           :git/sha "aa76089"}
   cronjure/cronjure  {:mvn/version "0.1.1"}
-  com.cronutils/cron-utils {:mvn/version "9.1.6"}
+  com.cronutils/cron-utils {:mvn/version "9.2.1"}
   }
 
  :paths ["src"]
@@ -12,7 +12,17 @@
  :aliases
  {
   :dev {:extra-paths ["test" "dev-resources"]
-        :extra-deps {org.clojure/clojure {:mvn/version "1.11.1"}
-                     org.slf4j/slf4j-simple {:mvn/version "1.7.36"}}}
+        :extra-deps {cider/cider-nrepl             {:mvn/version "0.57.0"}
+                     org.clojure/clojure           {:mvn/version "1.12.1"}
+                     org.slf4j/slf4j-simple        {:mvn/version "2.0.17"}
+                     refactor-nrepl/refactor-nrepl {:mvn/version "3.11.0"}}
+        :main-opts ["-m" "nrepl.cmdline"
+                    "--middleware" "[refactor-nrepl.middleware/wrap-refactor,cider.nrepl/cider-middleware]"]}
+
+  :test {:extra-paths ["test" "dev-resources"]
+         :extra-deps {lambdaisland/kaocha    {:mvn/version "1.91.1392"}
+                      org.slf4j/slf4j-simple {:mvn/version "2.0.17"}}
+         :jvm-opts ["-XX:-OmitStackTraceInFastThrow"]
+         :main-opts [ "-m" "kaocha.runner" "--no-capture-output"]}
   }
  }

@@ -1,5 +1,5 @@
 # -----
-#  Makefile for kosmos-kairos
+#  Makefile for kosmos-nrepl
 #
 
 #
@@ -11,23 +11,27 @@ CLOJURE := clojure
 #
 # Targets
 #
-.PHONY: clean dev attach test tag version
-
-#
-# run lein for dev repl
-#
-nrepl:
-	@${CLOJURE} -Mnrepl
-
-test:
-	@${CLOJURE} -Mdev:test
-
-attach: PORT=$(shell cat .nrepl-port)
-attach:
-	@${CLOJURE} -Mattach --attach localhost:${PORT}
+.PHONY: clean deps attach test tag version
 
 clean:
 	@rm -rf .cpcache/ target/
+
+deps:
+	@${CLOJURE} -X:deps prep
+
+#
+# put your local overrides for this project under an alias in
+#   ~/.clojure/deps.edn called overrides
+#
+dev:	deps
+	@${CLOJURE} -M:dev:overrides
+
+test:	deps
+	@${CLOJURE} -M:test
+
+attach: PORT=$(shell cat .nrepl-port)
+attach:
+	@${CLOJURE} -M:attach --attach localhost:${PORT}
 
 version:
 	@next-version --file .version
