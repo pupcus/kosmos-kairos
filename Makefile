@@ -1,5 +1,5 @@
 # -----
-#  Makefile for kosmos-nrepl
+#  Makefile for kosmos-kairos
 #
 
 #
